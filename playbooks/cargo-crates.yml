@@ -5,6 +5,7 @@
   tasks:
     - name: Install prerequisites
       become: true
+      become_user: root
       apt:
         name:
           - cmake
