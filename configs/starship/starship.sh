@@ -1,1 +1,0 @@
-ln -sf $PWD/starship/starship.toml $HOME/.config/starship.toml

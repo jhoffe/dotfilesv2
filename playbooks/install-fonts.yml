@@ -1,0 +1,23 @@
+- name: Install fonts
+  hosts: localhost
+
+  tasks:
+    - name: Download Fonts
+      get_url:
+        url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
+        dest: /tmp/fonts/fonts.zip
+        force: "yes"
+
+    - name: Make fonts directory
+      file:
+        path: "{{ lookup('env', 'HOME') }}/.fonts"
+        state: directory
+        mode: "0755"
+
+    - name: Unzip fonts
+      shell:
+        chdir: /tmp/fonts
+        cmd: "unzip fonts.zip -d {{ lookup('env', 'HOME') }}/.fonts"
+
+    - name: Reload font cache
+      shell: fc-cache -fv

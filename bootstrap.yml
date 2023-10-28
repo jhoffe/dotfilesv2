@@ -4,28 +4,34 @@
 
   tasks:
     - name: Install Rust
-      ansible.builtin.import_playbook: playbooks.rust
+      import_playbook: playbooks.rust
 
     - name: Install Cargo crates
-      ansible.builtin.import_playbook: playbooks.cargo-crates
+      import_playbook: playbooks.cargo-crates
 
     - name: Install Flatpak
-      ansible.builtin.import_playbook: playbooks.install-flatpak
+      import_playbook: playbooks.install-flatpak
 
     - name: Install Flatpak packages
-      ansible.builtin.import_playbook: playbooks.flatpak-packages
+      import_playbook: playbooks.flatpak-packages
 
     - name: Install Neovim
-      ansible.builtin.import_playbook: playbooks.neovim
+      import_playbook: playbooks.neovim
 
     - name: Install Zsh
-      ansible.builtin.import_playbook: playbooks.install-zsh
+      import_playbook: playbooks.install-zsh
 
     - name: Install vertical workspaces
-      ansible.builtin.import_playbook: playbooks.install-alacritty
+      import_playbook: playbooks.install-alacritty
 
     - name: Apply DConf settings
-      ansible.builtin.import_playbook: playbooks.dconf-settings
+      import_playbook: playbooks.dconf-settings
 
     - name: Install Alacritty
-      ansible.builtin.import_playbook: playbooks.install-alacritty
+      import_playbook: playbooks.install-alacritty
+
+    - name: Install fonts
+      import_playbook: playbooks.install-fonts
+
+    - name: Create config bindings
+      import_playbook: playbooks.stow
