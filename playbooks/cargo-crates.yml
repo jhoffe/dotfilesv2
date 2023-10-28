@@ -5,7 +5,7 @@
   tasks:
     - name: Install the crates
       community.general.cargo:
-        executable: "{{ lookup('env', 'HOME') }}/.cargo/bin"
+        executable: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo"
         name:
           - starship
           - eza
@@ -16,4 +16,3 @@
           - rm-improved
           - zoxide
         locked: true
-
