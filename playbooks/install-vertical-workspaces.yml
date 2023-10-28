@@ -1,0 +1,15 @@
+- name: Install vertical workspaces gnome extension
+  hosts: localhost
+
+  tasks:
+    - name: Clone extension repository
+      git:
+        repo: https://github.com/G-dH/vertical-workspaces
+        dest: /tmp/vertical-workspaces
+        clone: true
+        version: "esm-modules"
+
+    - name: Install the extension
+      community.general.make:
+        chdir: /tmp/vertical-workspaces
+        target: install

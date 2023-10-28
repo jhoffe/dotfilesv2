@@ -1,0 +1,31 @@
+# Bootstrapping my dotfiles
+- name: Bootstrapping
+  hosts: localhost
+
+  tasks:
+    - name: Install Rust
+      ansible.builtin.import_playbook: playbooks.rust
+
+    - name: Install Cargo crates
+      ansible.builtin.import_playbook: playbooks.cargo-crates
+
+    - name: Install Flatpak
+      ansible.builtin.import_playbook: playbooks.install-flatpak
+
+    - name: Install Flatpak packages
+      ansible.builtin.import_playbook: playbooks.flatpak-packages
+
+    - name: Install Neovim
+      ansible.builtin.import_playbook: playbooks.neovim
+
+    - name: Install Zsh
+      ansible.builtin.import_playbook: playbooks.install-zsh
+
+    - name: Install vertical workspaces
+      ansible.builtin.import_playbook: playbooks.install-alacritty
+
+    - name: Apply DConf settings
+      ansible.builtin.import_playbook: playbooks.dconf-settings
+
+    - name: Install Alacritty
+      ansible.builtin.import_playbook: playbooks.install-alacritty

@@ -1,0 +1,15 @@
+- name: Install Flatpak packages
+  hosts: localhost
+
+  tasks:
+    - name: Add the Flatpak packages
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.flatpak:
+        method: "user"
+        name:
+          - com.discordapp.Discord
+          - org.videolan.VLC
+          - com.spotify.Client
+          - com.visualstudio.code
+          - io.missioncenter.MissionCenter
+          - ca.desrt.dconf-editor

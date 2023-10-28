@@ -1,0 +1,39 @@
+# In case you don't like git submodules
+- name: Install NVIM
+  hosts: localhost
+  tasks:
+    - name: Clone nvim repository
+      git:
+        repo: https://github.com/neovim/neovim
+        dest: /tmp/neovim
+        clone: true
+        version: "v0.9.4"
+
+    - name: Install nvim build dependencies
+      become: true
+      apt:
+        name:
+          - ninja-build
+          - gettext
+          - libtool
+          - libtool-bin
+          - autoconf
+          - automake
+          - cmake
+          - g++
+          - pkg-config
+          - unzip
+          - curl
+        state: present
+
+    - name: Build nvim release version
+      community.general.make:
+        chdir: /tmp/neovim
+        params:
+          CMAKE_BUILD_TYPE: Release
+
+    - name: Install nvim release version
+      become: true
+      community.general.make:
+        chdir: /tmp/neovim
+        target: install

@@ -1,0 +1,94 @@
+- name: Apply settings for Gnome
+  hosts: localhost
+
+  tasks:
+    - name: Make sure psutil is installed
+      become: true
+      ansible.builtin.apt:
+        name:
+          - python3-psutil
+
+    - name: Set keyboard layout
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/input-sources/sources"
+        value: "[('xkb', 'dk')]"
+        state: present
+
+    - name: Set flat acceleration for mouse
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
+        value: "'flat'"
+        state: present
+
+    - name: Set mouse sensitivity
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/peripherals/mouse/speed"
+        value: 0.0264150943396
+        state: present
+
+    # Shortcuts for windows and workspaces
+    - name: Set maximize window shortcut
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/maximize"
+        value: "['<Super>m']"
+        state: present
+
+    - name: Set shortcut to move app to left monitor
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/move-to-monitor-left"
+        value: "['<Shift><Super>h']"
+        state: present
+
+    - name: Set shortcut to move app to right monitor
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/move-to-monitor-right"
+        value: "['<Shift><Super>l']"
+        state: present
+
+    - name: Set shortcut to move application workspace down
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-down"
+        value: "['<Shift><Super>j']"
+        state: present
+
+    - name: Set shortcut to move application to workspace up
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-up"
+        value: "['<Shift><Super>k']"
+        state: present
+
+    - name: Set shortcut to move to workspace down
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-down"
+        value: "['<Control><Super>j']"
+        state: present
+
+    - name: Set shortcut to move to workspace up
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-up"
+        value: "['<Control><Super>k']"
+        state: present
+
+    - name: Set workspaces to be on all monitors
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/mutter/workspaces-only-on-primary"
+        value: false
+        state: present
+
+    - name: Enable edge tiling
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.dconf:
+        key: "/org/gnome/mutter/edge-tiling"
+        value: true
+        state: present

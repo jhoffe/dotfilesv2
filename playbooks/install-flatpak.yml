@@ -1,0 +1,26 @@
+- name: Install Flatpak
+  hosts: localhost
+
+  pre_tasks:
+    - name: update repositories
+      apt: update_cache=yes
+      become: true
+      become_user: root
+      changed_when: False
+
+  tasks:
+    - name: Install flatpak
+      become: true
+      become_user: root
+      apt:
+        name:
+          - flatpak
+          - gnome-software-plugin-flatpak
+        state: present
+
+    - name: Add the Flathub remote
+      become_user: "{{ lookup('env', 'USER') }}"
+      community.general.flatpak_remote:
+        name: flathub
+        method: user
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo

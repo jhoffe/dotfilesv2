@@ -1,0 +1,17 @@
+- name: Install rust crates
+  hosts: localhost
+  become_user: "{{ lookup('env', 'USER') }}"
+
+  tasks:
+    - name: Install the crates
+      community.general.cargo:
+        name:
+          - starship
+          - eza
+          - bat
+          - ripgrep
+          - du-dust
+          - fd-find
+          - rm-improved
+          - zoxide
+        locked: true
