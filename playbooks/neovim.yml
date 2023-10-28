@@ -37,3 +37,8 @@
       community.general.make:
         chdir: /tmp/neovim
         target: install
+
+    - name: Delete tmp neovim
+      file:
+        path: /tmp/neovim
+        state: absent
