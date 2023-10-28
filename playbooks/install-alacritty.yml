@@ -38,7 +38,7 @@
     - name: Compile Alacritty
       shell:
         chdir: /tmp/alacritty
-        cmd: cargo build --release
+        cmd: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo build --release"
       when: alacritty_installed is failed
 
     - name: Add to terminfo
