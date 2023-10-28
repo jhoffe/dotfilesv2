@@ -3,9 +3,10 @@
   hosts: localhost
   tasks:
     - name: Check if nvim exists
-      stat:
-        path: /user/local/bin/nvim
+      shell:
+        cmd: command -V nvim
       register: nvim
+      ignore_errors: true
 
     - name: Clone nvim repository
       git:
@@ -13,7 +14,7 @@
         dest: /tmp/neovim
         clone: true
         version: "v0.9.4"
-      when: not nvim.stat.exists
+      when: nvim is failed
 
     - name: Install nvim build dependencies
       become: true
@@ -31,24 +32,24 @@
           - unzip
           - curl
         state: present
-      when: not nvim.stat.exists
+      when: nvim is failed
 
     - name: Build nvim release version
       community.general.make:
         chdir: /tmp/neovim
         params:
           CMAKE_BUILD_TYPE: Release
-      when: not nvim.stat.exists
+      when: nvim is failed
 
     - name: Install nvim release version
       become: true
       community.general.make:
         chdir: /tmp/neovim
         target: install
-      when: not nvim.stat.exists
+      when: nvim is failed
 
     - name: Delete tmp neovim
       file:
         path: /tmp/neovim
         state: absent
-      when: not nvim.stat.exists
+      when: nvim is failed
