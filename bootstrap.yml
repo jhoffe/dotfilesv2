@@ -3,34 +3,34 @@
   hosts: localhost
 
 - name: Install Rust
-  import_playbook: playbooks.rust
+  import_playbook: playbooks/rust.yml
 
 - name: Install Cargo crates
-  import_playbook: playbooks.cargo-crates
+  import_playbook: playbooks/cargo-crates.yml
 
 - name: Install Flatpak
-  import_playbook: playbooks.install-flatpak
+  import_playbook: playbooks/install-flatpak.yml
 
 - name: Install Flatpak packages
-  import_playbook: playbooks.flatpak-packages
+  import_playbook: playbooks/flatpak-packages.yml
 
 - name: Install Neovim
-  import_playbook: playbooks.neovim
+  import_playbook: playbooks/neovim.yml
 
 - name: Install Zsh
-  import_playbook: playbooks.install-zsh
+  import_playbook: playbooks/install-zsh.yml
 
 - name: Install vertical workspaces
-  import_playbook: playbooks.install-alacritty
+  import_playbook: playbooks/install-alacritty.yml
 
 - name: Apply DConf settings
-  import_playbook: playbooks.dconf-settings
+  import_playbook: playbooks/dconf-settings.yml
 
 - name: Install Alacritty
-  import_playbook: playbooks.install-alacritty
+  import_playbook: playbooks/install-alacritty.yml
 
 - name: Install fonts
-  import_playbook: playbooks.install-fonts
+  import_playbook: playbooks/install-fonts.yml
 
 - name: Create config bindings
-  import_playbook: playbooks.stow
+  import_playbook: playbooks/stow.yml
