@@ -2,36 +2,35 @@
 - name: Bootstrapping
   hosts: localhost
 
-  tasks:
-    - name: Install Rust
-      import_playbook: playbooks.rust
+- name: Install Rust
+  import_playbook: playbooks.rust
 
-    - name: Install Cargo crates
-      import_playbook: playbooks.cargo-crates
+- name: Install Cargo crates
+  import_playbook: playbooks.cargo-crates
 
-    - name: Install Flatpak
-      import_playbook: playbooks.install-flatpak
+- name: Install Flatpak
+  import_playbook: playbooks.install-flatpak
 
-    - name: Install Flatpak packages
-      import_playbook: playbooks.flatpak-packages
+- name: Install Flatpak packages
+  import_playbook: playbooks.flatpak-packages
 
-    - name: Install Neovim
-      import_playbook: playbooks.neovim
+- name: Install Neovim
+  import_playbook: playbooks.neovim
 
-    - name: Install Zsh
-      import_playbook: playbooks.install-zsh
+- name: Install Zsh
+  import_playbook: playbooks.install-zsh
 
-    - name: Install vertical workspaces
-      import_playbook: playbooks.install-alacritty
+- name: Install vertical workspaces
+  import_playbook: playbooks.install-alacritty
 
-    - name: Apply DConf settings
-      import_playbook: playbooks.dconf-settings
+- name: Apply DConf settings
+  import_playbook: playbooks.dconf-settings
 
-    - name: Install Alacritty
-      import_playbook: playbooks.install-alacritty
+- name: Install Alacritty
+  import_playbook: playbooks.install-alacritty
 
-    - name: Install fonts
-      import_playbook: playbooks.install-fonts
+- name: Install fonts
+  import_playbook: playbooks.install-fonts
 
-    - name: Create config bindings
-      import_playbook: playbooks.stow
+- name: Create config bindings
+  import_playbook: playbooks.stow
