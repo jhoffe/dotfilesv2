@@ -73,8 +73,8 @@
 
     - name: Install alacritty as x-terminal-emulator alternative
       become: true
-      command: update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
+      command: update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 50
 
     - name: Set alacritty as the default
       become: true
-      command: update-alternatives --set x-terminal-emulator /usr/bin/alacritty
+      command: update-alternatives --set x-terminal-emulator /usr/local/bin/alacritty
