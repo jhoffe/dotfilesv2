@@ -2,6 +2,12 @@
   hosts: localhost
 
   tasks:
+    - name: Install gnome shell extensions
+      become: true
+      apt:
+        name:
+          - gnome-shell-extensions
+
     - name: Clone extension repository
       git:
         repo: https://github.com/G-dH/vertical-workspaces
