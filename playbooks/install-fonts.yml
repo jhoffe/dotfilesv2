@@ -15,9 +15,10 @@
         mode: "0755"
 
     - name: Unzip fonts
-      shell:
+      command:
         chdir: /tmp
         cmd: "unzip fonts.zip -d {{ lookup('env', 'HOME') }}/.fonts"
+        creates: "{{ lookup('env', 'HOME') }}/.fonts/JetBrainsMonoNLNerdFont-Regular.ttf"
 
     - name: Reload font cache
-      shell: fc-cache -fv
+      command: fc-cache -fv
