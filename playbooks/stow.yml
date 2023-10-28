@@ -13,6 +13,8 @@
         - nvim
         - starship
         - zsh
-      shell: "stow {{ item }} -d configs/{{ item }} --target {{ lookup('env', 'HOME') }} --verbose=2"
+      command:
+        cmd: "stow {{ item }} --target {{ lookup('env', 'HOME') }} --verbose=2"
+        chdir: ./configs
       register: result
       changed_when: 'result.stderr is search("LINK: ")'
