@@ -34,3 +34,6 @@
 
 - name: Create config bindings
   import_playbook: playbooks/stow.yml
+
+- name: Install vertical workspaces
+  import_playbook: playbooks/install-vertical-workspaces.yml
