@@ -14,7 +14,7 @@
         - starship
         - zsh
       command:
-        cmd: "stow {{ item }} --target {{ lookup('env', 'HOME') }} --verbose=2"
-        chdir: ./configs
+        cmd: "stow --target {{ lookup('env', 'HOME') }} --verbose=2 {{ item }}"
+        chdir: "{{ playbook_dir }}/../configs"
       register: result
       changed_when: 'result.stderr is search("LINK: ")'
