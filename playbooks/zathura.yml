@@ -1,5 +1,7 @@
 - name: Install Zathura
   hosts: localhost
+  become: true
+
   pre_tasks:
     - name: update repositories
       apt: update_cache=yes
@@ -8,5 +10,6 @@
 
   tasks:
     - name: Download Zathura
+      become: true
       apt:
         name: zathura
