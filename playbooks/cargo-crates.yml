@@ -14,7 +14,6 @@
       community.general.cargo:
         executable: "{{ lookup('env', 'HOME') }}/.cargo/bin/cargo"
         name:
-          - starship
           - eza
           - bat
           - ripgrep
