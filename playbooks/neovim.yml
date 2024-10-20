@@ -13,7 +13,7 @@
         repo: https://github.com/neovim/neovim
         dest: /tmp/neovim
         clone: true
-        version: "v0.9.4"
+        version: "v0.9.5"
       when: nvim is failed
 
     - name: Install nvim build dependencies

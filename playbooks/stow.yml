@@ -8,14 +8,8 @@
         name: stow
 
     - name: Run stow
-      loop:
-        - alacritty
-        - nvim
-        - starship
-        - zsh
-        - zathura
       command:
-        cmd: "stow --target {{ lookup('env', 'HOME') }} --verbose=2 {{ item }}"
-        chdir: "{{ playbook_dir }}/../configs"
+        cmd: "stow --target {{ lookup('env', 'HOME') }} --verbose=2 dotfiles"
+        chdir: '{{ playbook_dir }}/..'
       register: result
       changed_when: 'result.stderr is search("LINK: ")'

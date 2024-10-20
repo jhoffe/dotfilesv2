@@ -1,0 +1,32 @@
+- name: Install zsh
+  hosts: localhost
+  vars:
+    extensions:
+      - Catppuccin.catppuccin-vsc
+      - Catppuccin.catppuccin-vsc-icons
+      - ms-python.python
+      - ms-python.vscode-pylance
+      - ms-toolsai.jupyter
+      - ms-vscode.cpptools
+      - ms-toolsai.jupyter-keymap
+      - ms-toolsai.jupyter-renderers
+      - ms-toolsai.vscode-jupyter-cell-tags
+      - ms-toolsai.vscode-jupyter-slideshow
+      - dbaeumer.vscode-eslint
+      - ms-azuretools.vscode-docker
+      - ms-python.isort
+      - ms-python.debugpy
+      - GitHub.vscode-pull-request-github
+      - formulahendry.auto-rename-tag
+      - octref.vetur
+      - GitHub.copilot
+      - christian-kohler.path-intellisense
+      - EditorConfig.EditorConfig
+      - donjayamanne.python-environment-manager
+      - bradlc.vscode-tailwindcss
+
+  tasks:
+    - name: Install packages
+      command:
+        cmd: "code --install-extension {{ item }}"
+      loop: "{{ extensions }}"
