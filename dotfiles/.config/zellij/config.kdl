@@ -279,7 +279,7 @@ plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "catppuccin-mocha"
+theme "catppuccin-macchiato"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -314,7 +314,7 @@ theme "catppuccin-mocha"
 // that will be used by default if this option is not set.
 // Examples:
 //
-// copy_command "xclip -selection clipboard" // x11
+copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 
