@@ -21,4 +21,5 @@
           - fd-find
           - rm-improved
           - zoxide
+          - zellij
         locked: true
