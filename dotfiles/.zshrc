@@ -118,3 +118,17 @@ alias c='clear'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+# pnpm
+export PNPM_HOME="/home/jonashoffmann/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# fnm
+FNM_PATH="/home/jonashoffmann/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jonashoffmann/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
